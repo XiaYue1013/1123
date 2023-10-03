@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>猜拳遊戲</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <h1 class="text-center">猜拳遊戲</h1>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-4 text-center ">
+                <img src="/static/ROCK.jpg" alt="石头" class="img-fluid choice" data-choice="石头">
+            </div>
+            <div class="col-md-4 text-center ">
+                <img src="/static/PAPER.jpg" alt="剪刀" class="img-fluid choice" data-choice="剪刀">
+            </div>
+            <div class="col-md-4 text-center ">
+                <img src="/static/SCISSORS.jpg" alt="布" class="img-fluid choice" data-choice="布">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('.choice').click(function() {
+                var userChoice = $(this).data('choice');
+                $.ajax({
+                    type: 'POST',
+                    url: '/play',
+                    data: { choice: userChoice },
+                    success: function(data) {
+                        var result = data.result;
+                        var message = '';
+                        var icon = ''; // 添加一个变量来存储图标
+
+                        if (result === "平局") {
+                            message = "平局";
+                            icon = 'info'; // 使用"info"图标表示平局
+                        } else if (result === "你赢了！") {
+                            message = "你赢了！";
+                            icon = 'success'; // 使用"success"图标表示赢了
+                        } else {
+                            message = "电脑赢了！";
+                            icon = 'error'; // 使用"error"图标表示电脑赢了
+                        }
+
+                        Swal.fire({
+                            title: '结果',
+                            text: message,
+                            icon: icon // 使用变量设置图标
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
