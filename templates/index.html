@@ -13,13 +13,13 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-4 text-center ">
-                <img src="/static/ROCK.jpg" alt="石头" class="img-fluid choice" data-choice="石头">
+                <img src="/static/ROCK.jpg" alt="石頭" class="img-fluid choice" data-choice="石頭">
             </div>
             <div class="col-md-4 text-center ">
-                <img src="/static/PAPER.jpg" alt="剪刀" class="img-fluid choice" data-choice="剪刀">
+                <img src="/static/PAPER.jpg" alt="布" class="img-fluid choice" data-choice="布">
             </div>
             <div class="col-md-4 text-center ">
-                <img src="/static/SCISSORS.jpg" alt="布" class="img-fluid choice" data-choice="布">
+                <img src="/static/SCISSORS.jpg" alt="剪刀" class="img-fluid choice" data-choice="剪刀">
             </div>
         </div>
     </div>
@@ -34,29 +34,32 @@
                     data: { choice: userChoice },
                     success: function(data) {
                         var result = data.result;
+                        var userChoiceText = data.user_choice;
+                        var computerChoiceText = data.computer_choice;
                         var message = '';
-                        var icon = ''; // 添加一个变量来存储图标
+                        var icon = ''; // 添加一个變量来儲存圖標
 
                         if (result === "平局") {
-                            message = "平局";
-                            icon = 'info'; // 使用"info"图标表示平局
+                            message = `平局，電腦選擇了${computerChoiceText}`;
+                            icon = 'info'; // 使用"info"圖標表示平局
                         } else if (result === "你赢了！") {
-                            message = "你赢了！";
-                            icon = 'success'; // 使用"success"图标表示赢了
+                            message = `你赢了！，電腦選擇了${computerChoiceText}`;
+                            icon = 'success'; // 使用"success"圖標表示赢了
                         } else {
-                            message = "电脑赢了！";
-                            icon = 'error'; // 使用"error"图标表示电脑赢了
+                            message = `電腦赢了！，電腦選擇了${computerChoiceText}`;
+                            icon = 'error'; // 使用"error"圖標表示電腦赢了
                         }
 
                         Swal.fire({
                             title: '结果',
                             text: message,
-                            icon: icon // 使用变量设置图标
+                            icon: icon // 使用變量設置圖標
                         });
                     }
                 });
             });
         });
+
     </script>
 </body>
 </html>
