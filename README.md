@@ -23,7 +23,11 @@
 6. 顯示三種情形時 能加上 電腦選的拳種嗎？ 這樣比較明顯能分辨出我贏或輸
 
 ## 圖片
-![石頭](/static/ROCK.jpg)![布](/static/PAPER.jpg)![剪刀](/static/SCISSORS.jpg)
+
+<img src="static/ROCK.jpg" alt="石頭" width="270">
+<img src="static/PAPER.jpg" alt="石頭" width="270">
+<img src="static/SCISSORS.jpg" alt="石頭" width="270">
+
 
 
 ## 參考附件
