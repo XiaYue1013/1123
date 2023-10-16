@@ -23,11 +23,9 @@
 6. 顯示三種情形時 能加上 電腦選的拳種嗎？ 這樣比較明顯能分辨出我贏或輸
 
 ## 圖片
-
-<img src="static/ROCK.jpg" alt="石頭" width="270">
-<img src="static/PAPER.jpg" alt="石頭" width="270">
-<img src="static/SCISSORS.jpg" alt="石頭" width="270">
-
+<center class="half">
+<img src="static/ROCK.jpg" alt="石頭" width="270"><img src="static/PAPER.jpg" alt="石頭" width="270"><img src="static/SCISSORS.jpg" alt="石頭" width="270">
+</center>
 
 
 ## 參考附件
