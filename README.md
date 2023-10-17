@@ -20,12 +20,15 @@
 
 5. 我贏了 電腦贏了 平局 三種的sweetalert 可以顯示不同icon嗎？
 
-6. 顯示三種情形時 能加上 電腦選的拳種嗎？ 這樣比較明顯能分辨出我贏或輸
+6. 顯示三種情形時 能加上 電腦選的拳種嗎？ 這樣比較明顯能分辨出我贏或輸  
+  
+  
 
-## 圖片
-<center class="half">
-<img src="static/ROCK.jpg" alt="石頭" width="270"><img src="static/PAPER.jpg" alt="石頭" width="270"><img src="static/SCISSORS.jpg" alt="石頭" width="270">
-</center>
+|  <font size=5>圖片</font>   |   |  |
+|  ----  | ----  | ---- |
+| <img src="static/ROCK.jpg" alt="石頭" width="270">  | <img src="static/PAPER.jpg" alt="石頭" width="270"> | <img src="static/SCISSORS.jpg" alt="石頭" width="270">|
+
+
 
 
 ## 參考附件
