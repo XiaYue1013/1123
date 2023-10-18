@@ -22,14 +22,12 @@
 
 6. 顯示三種情形時 能加上 電腦選的拳種嗎？ 這樣比較明顯能分辨出我贏或輸  
   
-  
+## 圖片
 
-|  <font size=5>圖片</font>   |   |  |
-|  ----  | ----  | ---- |
+|  石頭   |  布  |  剪刀  |
+|  :----:  | :----:  | :----: |
 | <img src="static/ROCK.jpg" alt="石頭" width="270">  | <img src="static/PAPER.jpg" alt="石頭" width="270"> | <img src="static/SCISSORS.jpg" alt="石頭" width="270">|
-
-
-
 
 ## 參考附件
 1. [Pythonanywhere Flask 部屬](https://www.youtube.com/watch?v=-1KqfigrL4E&ab_channel=%E8%98%87%E9%9F%8B%E6%96%87)
+2. [圖片來源](https://www.istockphoto.com/hk/%E5%90%91%E9%87%8F/colorful-hand-icon-set-gm1395632555-450673708)
