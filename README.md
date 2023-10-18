@@ -1,7 +1,7 @@
 # [猜拳遊戲](https://yuwei0531.pythonanywhere.com/)
 
 ## 使用工具
-1. [ChatGPT](https://developers.line.biz/zh-hant/)
+1. [ChatGPT](https://chat.openai.com/auth/login)
 2. [Pythonanywhere](https://www.pythonanywhere.com/)
 3. [GitHub](https://github.com/) (可選)
 
