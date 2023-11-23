@@ -1,65 +1,70 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh">
 <head>
+    <meta charset="UTF-8">
     <title>猜拳遊戲</title>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</head>
-<body>
-    <h1 class="text-center">猜拳遊戲</h1>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-4 text-center ">
-                <img src="/static/ROCK.jpg" alt="石頭" class="img-fluid choice" data-choice="石頭">
-            </div>
-            <div class="col-md-4 text-center ">
-                <img src="/static/PAPER.jpg" alt="布" class="img-fluid choice" data-choice="布">
-            </div>
-            <div class="col-md-4 text-center ">
-                <img src="/static/SCISSORS.jpg" alt="剪刀" class="img-fluid choice" data-choice="剪刀">
-            </div>
-        </div>
-    </div>
-
+    <!-- 引入 Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        .choice-image {
+            cursor: pointer;
+            width: 100%; /* 讓圖片在其容器中充滿 */
+            height: auto;
+            padding: 10px; /* 若需要，可添加一些內邊距 */
+        }
+    </style>
     <script>
-        $(document).ready(function() {
-            $('.choice').click(function() {
-                var userChoice = $(this).data('choice');
-                $.ajax({
-                    type: 'POST',
-                    url: '/play',
-                    data: { choice: userChoice },
-                    success: function(data) {
-                        var result = data.result;
-                        var userChoiceText = data.user_choice;
-                        var computerChoiceText = data.computer_choice;
-                        var message = '';
-                        var icon = ''; // 添加一个變量来儲存圖標
+        function play(choice) {
+            fetch('/play', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({choice: choice}),
+            })
+            .then(response => response.json())
+            .then(data => {
+                let icon;
+                let title;
+                if (data.result === "你贏了!") {
+                    icon = 'success';
+                    title = '你贏了! 電腦選擇的是 ' + data.computer_choice;
+                } else if (data.result === "你輸了!") {
+                    icon = 'error';
+                    title = '你輸了! 電腦選擇的是 ' + data.computer_choice;
+                } else {
+                    icon = 'info';
+                    title = '平局! 電腦也選擇的是 ' + data.computer_choice;
+                }
 
-                        if (result === "平局") {
-                            message = `平局，電腦選擇了${computerChoiceText}`;
-                            icon = 'info'; // 使用"info"圖標表示平局
-                        } else if (result === "你赢了！") {
-                            message = `你赢了！，電腦選擇了${computerChoiceText}`;
-                            icon = 'success'; // 使用"success"圖標表示赢了
-                        } else {
-                            message = `電腦赢了！，電腦選擇了${computerChoiceText}`;
-                            icon = 'error'; // 使用"error"圖標表示電腦赢了
-                        }
-
-                        Swal.fire({
-                            title: '结果',
-                            text: message,
-                            icon: icon // 使用變量設置圖標
-                        });
+                Swal.fire({
+                    title: title,
+                    text: '你的選擇: ' + data.user_choice,
+                    icon: icon,
+                    confirmButtonText: '再玩一次'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.reload();
                     }
                 });
             });
-        });
-
+        }
     </script>
+</head>
+<body class="d-flex align-items-center justify-content-center" style="min-height: 100vh;">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <img src="/static//ROCK.jpg" alt="石頭" class="choice-image" onclick="play('石頭')">
+            </div>
+            <div class="col">
+                <img src="/static//PAPER.jpg" alt="布" class="choice-image" onclick="play('布')">
+            </div>
+            <div class="col">
+                <img src="/static//SCISSORS.jpg" alt="剪刀" class="choice-image" onclick="play('剪刀')">
+            </div>
+        </div>
+    </div>
 </body>
 </html>
